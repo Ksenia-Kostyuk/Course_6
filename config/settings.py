@@ -52,7 +52,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        'NAME': 'CourseApp',
+        'NAME': 'MailingApp',
         'USER': 'postgres',
         'PASSWORD': 'Kkn_250600',
         'HOST': 'localhost',

@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from mailings.models import Messages
+
+
+@admin.register(Messages)
+class MessagesAdmin(admin.ModelAdmin):
+    list_display = ('theme', 'body')
