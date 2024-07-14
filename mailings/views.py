@@ -1,5 +1,5 @@
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from mailings.models import Messages
 
@@ -21,4 +21,9 @@ class MessagesCreateView(CreateView):
 class MessagesUpdateView(UpdateView):
     model = Messages
     fields = ('theme', 'body')
+    success_url = reverse_lazy('mailings:messages_list')
+
+
+class MessagesDeleteView(DeleteView):
+    model = Messages
     success_url = reverse_lazy('mailings:messages_list')
