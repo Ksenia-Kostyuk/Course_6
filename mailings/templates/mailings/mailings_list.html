@@ -3,19 +3,22 @@
  <div class="album py-5 bg-body-tertiary">
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            {% for object in object_list %}
             <div class="col">
                 <div class="card shadow-sm">
                     <div class="card-body">
-                        <p class="card-text">Тема: {{object.theme}}</p>
-                        <p class="card-text">Сообщение: {{object.body}}</p>
+                      <p class="card-text">Рассылка №{{object.id}}</p>
+                        <p class="card-text">Тема: {{object.message}}</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <a class="btn btn-sm btn-outline-secondary" href="{% url 'mailings:messages_list' %}" role="button">Выйти</a>
+                                <a class="btn btn-sm btn-outline-secondary" href="{% url 'mailings:mailings_detail' object.pk %}" role="button">Посмотреть</a>
+                                <a class="btn btn-sm btn-outline-secondary" href="{% url 'mailings:mailings_update' object.pk %}" role="button">Редактировать</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
     </div>
 </div>

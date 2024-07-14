@@ -1,0 +1,27 @@
+{% extends 'mailings/base.html' %}
+{% block content %}
+ <div class="album py-5 bg-body-tertiary">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div class="col-2">
+                <div class="card shadow-m" style="width: 400px;">
+                    <div class="card-body" >
+                        <h5 class="card-title">Рассылка №{{object.id}}</h5>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">Тема: {{object.message}}</h6>
+                        <p class="card-text"></p>
+                        <p><small>Первая рассылка: {{object.date}} - статус: {{object.status}}</small></p>
+                        <p><small></small></p>
+                        <p><small></small></p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a class="btn btn-sm btn-outline-secondary" href="{% url 'mailings:mailings_list' %}" role="button">Выйти</a>
+                                <a class="btn btn-sm btn-outline-secondary" href="{% url 'mailings:mailings_delete' object.pk%}" role="button">Удалить</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
