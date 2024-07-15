@@ -1,3 +1,5 @@
+from datetime import timezone
+
 from django.db import models
 
 
@@ -29,13 +31,14 @@ class Clients(models.Model):
 class Mailings(models.Model):
     STATUS_CHOICES = [('создано', 'Создано'), ('начато', 'Начато'), ('завершено', 'Завершено')]
     date = models.DateTimeField(verbose_name='Дата и время первой рассылки')
+
+    e = models.DateTimeField(verbose_name='Дата и время окончания рассылки')
     frequency = models.CharField(max_length=100, choices=[('ежедневно', 'Ежедневно'), ('еженедельно', 'Еженедельно'),
                                                           ('ежемесячно', 'Ежемесячно')],
                                  verbose_name='Периодичность')
     status = models.CharField(max_length=100, choices=STATUS_CHOICES, verbose_name='Статус')
     message = models.OneToOneField(Messages, on_delete=models.CASCADE)
     clients = models.ManyToManyField(Clients)
-
 
     class Meta:
         verbose_name = 'Рассылка'
