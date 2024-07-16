@@ -2,30 +2,39 @@
 {% block content %}
 <div class="album py-5 bg-body-tertiary">
     <div class="container">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            <div class="col">
+        <form class='row' method="post" enctype="multipart/form-data">
+            <div class="col-6">
+                <p class="card-text">Сообщение</p>
                 <div class="card shadow-sm" style="width: 400px;">
                     <div class="card-body">
-                        <form method="post">
-                            {{ form.as_p }}
-                            <button type="submit" class="btn btn-primary">
-                                {% if object %}
-                                Сохранить
-                                {% else %}
-                                Создать
-                                {% endif %}
-                            </button>
-                        </form>
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-primary">
+                            {% if object %}
+                            Сохранить
+                            {% else %}
+                            Создать
+                            {% endif %}
+                        </button>
                         <div class="btn-group">
                             <a class="btn btn-sm btn-outline-secondary"
                                href="{% url 'mailings:mailings_list' %}" role="button">Отмена</a>
-
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <div class="col-6">
+                <div class="card shadow-sm" style="width: 400px;">
+                    <p class="card-text">Сообщение</p>
+                    <div class="card-body">
+                        {{ formset.management_form }}
+                        {% for form in formset.forms %}
+                        {{ form.as_p }}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
-</div>
 </div>
 {% endblock %}
