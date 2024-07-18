@@ -51,7 +51,7 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
 
     def get_form_class(self):
         user = self.request.user
-        if user.has_perm('mailings.can_unplug_mailings') and user.has_perm('mailings.') :
+        if user.has_perm('mailings.can_unplug_mailings'):
             return UserModeratorForm
         raise PermissionDenied
 
