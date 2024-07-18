@@ -9,5 +9,5 @@ class MailingsConfig(AppConfig):
 
     def ready(self):
         from mailings.service import start
-        sleep(1)
+        sleep(2)
         start()

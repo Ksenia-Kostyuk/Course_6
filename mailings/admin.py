@@ -5,7 +5,7 @@ from mailings.models import Messages, Clients, Mailings, Сhance
 
 @admin.register(Messages)
 class MessagesAdmin(admin.ModelAdmin):
-    list_display = ('theme', 'body')
+    list_display = ('theme', 'body',)
 
 
 @admin.register(Clients)
@@ -15,7 +15,7 @@ class ClientsAdmin(admin.ModelAdmin):
 
 @admin.register(Mailings)
 class MailingsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'date', 'frequency', 'status', 'message')
+    list_display = ('name', 'date', 'frequency', 'status', 'message', 'is_active')
 
 
 @admin.register(Сhance)

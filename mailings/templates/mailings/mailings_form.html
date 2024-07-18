@@ -4,8 +4,8 @@
     <div class="container">
         <form class='row' method="post" enctype="multipart/form-data">
             <div class="col-6">
-                <p class="card-text">Сообщение</p>
-                <div class="card shadow-sm" style="width: 400px;">
+                <p class="card-text">Рассылка</p>
+                <div class="card">
                     <div class="card-body">
                         {% csrf_token %}
                         {{ form.as_p }}
@@ -24,12 +24,12 @@
                 </div>
             </div>
             <div class="col-6">
-                <div class="card shadow-sm" style="width: 400px;">
-                    <p class="card-text">Сообщение</p>
+                <p class="card-text">Сообщение</p>
+                <div class="card">
                     <div class="card-body">
                         {{ formset.management_form }}
                         {% for form in formset.forms %}
-                        {{ form.as_p }}
+                            {{ form.as_p }}
                         {% endfor %}
                     </div>
                 </div>

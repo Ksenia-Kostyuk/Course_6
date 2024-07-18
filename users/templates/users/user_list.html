@@ -4,22 +4,19 @@
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             {% for object in object_list %}
-            {% if user == object.owner %}
             <div class="col">
                 <div class="card shadow-sm">
+                    <h5 class="card-title">Пользователь {{object.tg}}</h5>
                     <div class="card-body">
-                      <p class="card-text">Рассылка "{{object.name}}"</p>
-                        <p class="card-text">Тема: {{object.message}}</p>
+                      <p class="card-text">Почта: "{{object.name}}"</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <a class="btn btn-sm btn-outline-secondary" href="{% url 'mailings:mailings_detail' object.pk %}" role="button">Посмотреть</a>
-                                <a class="btn btn-sm btn-outline-secondary" href="{% url 'mailings:mailings_update' object.pk %}" role="button">Редактировать</a>
+                                <a class="btn btn-sm btn-outline-secondary" href="{% url 'users:user_blok' object.pk %}" role="button">Заблокировать</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            {% endif %}
             {% endfor %}
         </div>
     </div>

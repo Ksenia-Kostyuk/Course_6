@@ -194,7 +194,7 @@
                     <ul class="list-unstyled">
                         <li><a href="{% url 'mailings:mailings_list' %}" class="text-white">Главная</a></li>
                         {% if user.is_authenticated %}
-                        <li><a href="{% url 'mailings:logout' %}" class="text-white">Выход</a></li>
+                        <li><a href="{% url 'users:logout' %}" class="text-white">Выход</a></li>
                         {% else %}
                         <li><a href="{% url 'users:login' %}" class="text-white">Войти</a></li>
                         <li><a href="{% url 'users:register' %}" class="text-white">Регистрация</a></li>
@@ -230,13 +230,15 @@
             <div class="col-lg-6 col-md-8 mx-auto">
                 <h1 class="fw-light">Abracadabra</h1>
                 <p class="lead text-body-secondary">Удобная платформа для отправки рассылок</p>
+                {% if user.is_authenticated %}
                 <p>
                     <a href="{% url 'mailings:mailings_create' %}" class="btn btn-secondary my-2">Создать рассылку</a>
+                    <a href="{% url 'users:user_list' %}" class="btn btn-secondary my-2">Посмотреть список пользователей</a>
                 </p>
+                {% endif %}
             </div>
         </div>
     </section>
-
     {% block content %}
     {% endblock %}
 </main>
@@ -244,11 +246,9 @@
 <footer class="text-body-secondary py-5">
     <div class="container">
         <p class="float-end mb-1">
-            <a href="#">Back to top</a>
+            <a href="#">Наш Блог</a>
         </p>
-        <p class="mb-1">Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-        <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a
-                href="/docs/5.3/getting-started/introduction/">getting started guide</a>.</p>
+        <p class="mb-1"></p>
     </div>
 </footer>
 <script src="{% static '/js/bootstrap.bundle.min.js' %}"

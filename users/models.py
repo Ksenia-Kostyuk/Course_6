@@ -8,6 +8,7 @@ class User(AbstractUser):
 
     tg_name = models.CharField(max_length=50, verbose_name='Ник пользователя')
     avatar = models.ImageField(upload_to='users/avatars/', verbose_name='Аватар', blank=True, null=True)
+    user_blok = models.BooleanField(default=False, verbose_name='Блокировка пользователя')
 
     token = models.CharField(max_length=100, verbose_name='Токен', blank=True, null=True)
 
@@ -17,6 +18,10 @@ class User(AbstractUser):
     class Meta:
         verbose_name = 'Пользователь'
         verbose_name_plural = 'Пользователи'
+        permissions = [
+            ('can_blok_users', 'Может заблокировать пользователя'),
+            ('can_see_users', 'Может посмотреть список пользователей')
+        ]
 
     def __str__(self):
         return self.email
