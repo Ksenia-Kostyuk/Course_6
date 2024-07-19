@@ -14,4 +14,4 @@ class MyBlog(models.Model):
         verbose_name_plural = 'Заголовки'
 
     def __str__(self):
-        return f'{self.name} {self.content}'
+        return f'{self.name}'

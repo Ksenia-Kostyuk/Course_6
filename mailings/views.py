@@ -1,6 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import PermissionDenied
 from django.forms import inlineformset_factory
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
@@ -100,3 +101,11 @@ class MailingsUpdateView(LoginRequiredMixin, UpdateView):
 class MailingsDeleteView(DeleteView):
     model = Mailings
     success_url = reverse_lazy('mailings:mailings_list')
+
+
+def count_mail(request):
+    """
+    Возвращает общее число рассылок
+    """
+    context = Mailings.objects.count()
+    return render(request, 'mailings/mailings_list.html', context)

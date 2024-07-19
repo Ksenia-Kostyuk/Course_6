@@ -19,6 +19,7 @@ INSTALLED_APPS = [
     'django_apscheduler',
     'mailings',
     'users',
+    'blog',
 ]
 
 APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"

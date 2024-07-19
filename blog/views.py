@@ -1,3 +1,42 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
-# Create your views here.
+from blog.forms import MyBlogForm
+from blog.models import MyBlog
+
+
+def blog(request):
+    return render(request, "blog/base.html")
+
+
+class MyBlogListView(ListView):
+    model = MyBlog
+
+
+class MyBlogDetailView(DetailView):
+    model = MyBlog
+
+
+class MyBlogCreateView(CreateView):
+    model = MyBlog
+    form_class = MyBlogForm
+    success_url = reverse_lazy('mailings:blog_list')
+
+    def form_valid(self, form):
+        message = form.save()
+        user = self.request.user
+        message.owner = user
+        message.save()
+        return super().form_valid(form)
+
+
+class MyBlogUpdateView(UpdateView):
+    model = MyBlog
+    form_class = MyBlogForm
+    success_url = reverse_lazy('mailings:blog_list')
+
+
+class MyBlogDeleteView(DeleteView):
+    model = MyBlog
+    success_url = reverse_lazy('mailings:blog_list')
