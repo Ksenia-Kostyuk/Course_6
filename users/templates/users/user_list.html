@@ -6,9 +6,8 @@
             {% for object in object_list %}
             <div class="col">
                 <div class="card shadow-sm">
-                    <h5 class="card-title">Пользователь {{object.tg}}</h5>
+                    <h5 class="card-title">Пользователь "{{object.email}}"</h5>
                     <div class="card-body">
-                      <p class="card-text">Почта: "{{object.name}}"</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
                                 <a class="btn btn-sm btn-outline-secondary" href="{% url 'users:user_blok' object.pk %}" role="button">Заблокировать</a>

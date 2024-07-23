@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
+from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from blog.forms import MyBlogForm
@@ -8,6 +9,13 @@ from blog.models import MyBlog
 
 def blog(request):
     return render(request, "blog/base.html")
+
+
+class MyBlogView(View):
+
+    def get(self, request):
+        blogApps = MyBlog.objects.all()
+        return render(request, "blog/base.html", {"blog_list": blogApps})
 
 
 class MyBlogListView(ListView):
