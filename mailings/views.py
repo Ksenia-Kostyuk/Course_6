@@ -107,5 +107,5 @@ def count_mail(request):
     """
     Возвращает общее число рассылок
     """
-    context = Mailings.objects.count()
+    context = Mailings.objects.all()
     return render(request, 'mailings/mailings_list.html', context)

@@ -239,7 +239,7 @@
                     <a href="{% url 'users:user_list' %}" class="btn btn-secondary my-2">Посмотреть список
                         пользователей</a>
                 </p>
-                <p class="lead text-body-secondary">Общее число рассылок: {{ count }}</p>
+                <p class="lead text-body-secondary">Общее число рассылок: {{ count|length }}</p>
                 {% endif %}
             </div>
         </div>
