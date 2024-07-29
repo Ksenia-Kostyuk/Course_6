@@ -1,0 +1,22 @@
+{% extends 'mailings/base.html' %}
+{% block content %}
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+        <form class='row' method="post" enctype="multipart/form-data">
+            <div class="col-6">
+                <p class="card-text">Сообщение</p>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Тема: "{{object.theme}}"</h5>
+                        <p><small>{{object.body}}</small></p>
+                        <div class="btn-group">
+                            <a class="btn btn-sm btn-outline-secondary"
+                               href="{% url 'mailings:mailings_list' %}" role="button">Выйти</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

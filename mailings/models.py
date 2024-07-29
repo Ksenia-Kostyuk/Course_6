@@ -2,6 +2,7 @@ from django.db import models
 
 from users.models import User
 
+
 class Messages(models.Model):
     theme = models.CharField(max_length=100, verbose_name='Тема письма')
     body = models.TextField(verbose_name='Сообщение')

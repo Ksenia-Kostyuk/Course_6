@@ -5,10 +5,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 
 from blog.forms import MyBlogForm
 from blog.models import MyBlog
-
-
-def blog(request):
-    return render(request, "blog/base.html")
+from blog.services import get_articles_from_cache
 
 
 class MyBlogView(View):
@@ -19,7 +16,12 @@ class MyBlogView(View):
 
 
 class MyBlogListView(ListView):
+    template_name = 'blog/blog_list.html'
     model = MyBlog
+
+    def get_queryset(self, *args, **kwargs):
+        queryset = get_articles_from_cache().filter(publication_sign=True)
+        return queryset
 
 
 class MyBlogDetailView(DetailView):

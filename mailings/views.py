@@ -1,3 +1,5 @@
+from random import sample
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import PermissionDenied
 from django.forms import inlineformset_factory
@@ -5,8 +7,23 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
+from django.views.generic import TemplateView
+
+from blog.models import MyBlog
 from mailings.forms import MailingsForm, MessagesForm, MailingsModeratorForm
-from mailings.models import Messages, Mailings
+from mailings.models import Messages, Mailings, Clients
+
+
+class BaseView(TemplateView):
+    template_name = 'mailings/base.html'
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        mailings = Mailings.objects.all()
+        blog = MyBlog.objects.all()
+        context_data['all_mailings'] = mailings.count()
+        context_data['blog_list'] = blog
+        return context_data
 
 
 class MessagesListView(ListView):

@@ -9,7 +9,6 @@
                         <h5 class="card-title">Рассылка №{{object.id}}</h5>
                         <p class="card-text"></p>
                         <p><small>Первая рассылка: {{object.date}} - статус: {{object.status}}</small></p>
-                        <p><small>Первая рассылка: {{object.date}} - статус: {{object.status}}</small></p>
                         <p><small></small></p>
                         <p><small></small></p>
                         <div class="d-flex justify-content-between align-items-center">
@@ -27,13 +26,8 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Сообщение</h5>
-                        {% for message in messages_detail %}
-                        <p class="card-text"></p>
-                        <p><small>Тема: {{object.Messages.theme}} </small></p>
-                        <p><small>{{message.body}}</small></p>
-                        <p><small></small></p>
-                        <p><small></small></p>
-                        {% endfor %}
+                        <a class="btn btn-sm btn-outline-secondary"
+                                   href="{% url 'mailings:messages_detail' object.pk%}" role="button">Посмотреть</a>
                     </div>
                 </div>
             </div>
