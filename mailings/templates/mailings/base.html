@@ -192,7 +192,7 @@
                 <div class="col-sm-4 offset-md-1 py-4">
                     <h4>Главная</h4>
                     <ul class="list-unstyled">
-                        <li><a href="{% url 'mailings:mailings_list' %}" class="text-white">Главная</a></li>
+                        <li><a href="{% url 'mailings:base' %}" class="text-white">Главная</a></li>
                         {% if user.is_authenticated %}
                         <li><a href="{% url 'users:logout' %}" class="text-white">Выход</a></li>
                         {% else %}
@@ -235,7 +235,7 @@
                 <p>
                     <a href="{% url 'mailings:mailings_create' %}" class="btn btn-secondary my-2">Создать рассылку</a>
                     <a href="{% url 'mailings:messages_create' %}" class="btn btn-secondary my-2">Создать сообщение</a>
-                    <a href="{% url 'mailings:clients_create' %}" class="btn btn-secondary my-2">Создать пользователя</a>
+                    <a href="{% url 'mailings:clients_create' %}" class="btn btn-secondary my-2">Создать клиента</a>
                     <a href="{% url 'users:user_list' %}" class="btn btn-secondary my-2">Посмотреть список
                         пользователей</a>
                     <a href="{% url 'mailings:mailings_list' %}" class="btn btn-secondary my-2">Посмотреть список

@@ -1,18 +1,9 @@
-from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views import View
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 
 from blog.forms import MyBlogForm
 from blog.models import MyBlog
 from blog.services import get_articles_from_cache
-
-
-class MyBlogView(View):
-
-    def get(self, request):
-        blogApps = MyBlog.objects.all()
-        return render(request, "blog/base.html", {"blog_list": blogApps})
 
 
 class MyBlogListView(ListView):
@@ -37,7 +28,7 @@ class MyBlogDetailView(DetailView):
 class MyBlogCreateView(CreateView):
     model = MyBlog
     form_class = MyBlogForm
-    success_url = reverse_lazy('mailings:blog_list')
+    success_url = reverse_lazy('mailings:base')
 
     def form_valid(self, form):
         message = form.save()
@@ -50,9 +41,9 @@ class MyBlogCreateView(CreateView):
 class MyBlogUpdateView(UpdateView):
     model = MyBlog
     form_class = MyBlogForm
-    success_url = reverse_lazy('mailings:blog_list')
+    success_url = reverse_lazy('mailings:base')
 
 
 class MyBlogDeleteView(DeleteView):
     model = MyBlog
-    success_url = reverse_lazy('mailings:blog_list')
+    success_url = reverse_lazy('mailings:base')

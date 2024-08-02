@@ -21,7 +21,7 @@ class BaseView(TemplateView):
         mailings = Mailings.objects.all()
         blog = MyBlog.objects.all()
         context_data['all_mailings'] = mailings.count()
-        context_data['blog_list'] = blog
+        context_data['blog'] = blog
         return context_data
 
 
