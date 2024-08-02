@@ -1,0 +1,29 @@
+{% extends 'mailings/base.html' %}
+{% block content %}
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+        <form class='row' method="post" enctype="multipart/form-data">
+            <div class="col-6">
+                <p class="card-text">Клиент</p>
+                <div class="card">
+                    <div class="card-body">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-primary">
+                            {% if object %}
+                            Сохранить
+                            {% else %}
+                            Создать
+                            {% endif %}
+                        </button>
+                        <div class="btn-group">
+                            <a class="btn btn-sm btn-outline-secondary"
+                               href="{% url 'mailings:mailings_list' %}" role="button">Отмена</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

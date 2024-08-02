@@ -1,5 +1,3 @@
-from asyncio import sleep
-
 from django.apps import AppConfig
 
 
@@ -9,5 +7,4 @@ class MailingsConfig(AppConfig):
 
     def ready(self):
         from mailings.service import start
-        sleep(2)
         start()
